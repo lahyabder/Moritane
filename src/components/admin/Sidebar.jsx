@@ -7,7 +7,7 @@ const Sidebar = () => {
     return (
         <aside className="admin-sidebar">
             <div className="sidebar-logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <img src="/logo_full.png" alt="Logo" style={{ height: '45px' }} />
+                <img src="/logo_full.png" alt="Logo" style={{ height: '45px', filter: 'drop-shadow(0 0 1px #ffffff) drop-shadow(0 0 3px rgba(255,255,255,0.2))' }} />
                 <span style={{ fontSize: '0.9rem', color: '#F68B2D', fontWeight: 'bold', alignSelf: 'flex-end', marginBottom: '5px' }}>أدمن</span>
             </div>
 

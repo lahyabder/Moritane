@@ -46,7 +46,7 @@ const Navbar = ({ onSearch, user, onLoginClick, onLogout }) => {
       <div className="container navbar-content">
         <div className="navbar-right">
           <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <img src="/logo_full.png" alt="Moritane" style={{ height: '50px', objectFit: 'contain' }} />
+            <img src="/logo_full.png" alt="Moritane" style={{ height: '50px', objectFit: 'contain', filter: 'drop-shadow(0 0 1px #ffffff) drop-shadow(0 0 5px rgba(255,255,255,0.2))' }} />
           </Link>
 
           {!isSearchOpen && (
