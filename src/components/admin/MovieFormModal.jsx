@@ -7,7 +7,8 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
         title: '',
         description: '',
         image: '',
-        videoUrl: '', // New field for video link
+        videoUrl: '',
+        type: type, // Initialize with prop type, but allow changing
         year: new Date().getFullYear().toString(),
         rating: '',
         category: '',
@@ -20,17 +21,17 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
         if (initialData) {
             setFormData(initialData);
         } else {
-            // Reset form for new entry
             setFormData({
                 title: '',
                 description: '',
                 image: '',
                 videoUrl: '',
+                type: 'movie', // Default to movie for new
                 year: new Date().getFullYear().toString(),
                 rating: '',
-                category: type === 'series' ? 'مسلسلات' : 'أفلام',
+                category: 'عام',
                 duration: '',
-                seasons: '1', // Default to 1 season
+                seasons: '1',
                 isNew: true
             });
         }
@@ -42,14 +43,10 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
         const { name, value, type: inputType, checked, files } = e.target;
 
         if (inputType === 'file') {
-            // Mock file upload: create a fake local URL or just use a placeholder
-            // In a real app, you would upload to a server/storage bucket here
             if (files && files[0]) {
-                // For demo purposes, we will just use a placeholder or the file name if we can't upload
-                // Ideally we should use FileReader to preview
                 const reader = new FileReader();
                 reader.onload = (event) => {
-                    setFormData(prev => ({ ...prev, [name]: event.target.result })); // Base64 for preview
+                    setFormData(prev => ({ ...prev, [name]: event.target.result }));
                 };
                 reader.readAsDataURL(files[0]);
             }
@@ -61,7 +58,6 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
         }
     };
 
-    // Helper to handle manual image URL change separately if needed
     const handleUrlChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -77,13 +73,33 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
         <div className="modal-overlay">
             <div className="form-modal-content">
                 <div className="form-modal-header">
-                    <h2>{initialData ? 'تعديل' : 'إضافة'} {type === 'movie' ? 'فيلم' : 'مسلسل'}</h2>
+                    <h2>{initialData ? 'تعديل المحتوى' : 'إضافة محتوى جديد'}</h2>
                     <button className="close-btn" onClick={onClose}>
                         <X size={24} />
                     </button>
                 </div>
 
                 <form onSubmit={handleSubmit} className="admin-form">
+
+                    {/* Content Type Selector - Only for new entries */}
+                    {!initialData && (
+                        <div className="form-group" style={{ marginBottom: '1.5rem', background: '#222', padding: '10px', borderRadius: '8px' }}>
+                            <label style={{ color: '#4ade80' }}>نوع المحتوى</label>
+                            <select
+                                name="type"
+                                value={formData.type}
+                                onChange={handleChange}
+                                style={{ width: '100%', padding: '0.8rem', background: '#111', border: '1px solid #333', color: 'white', borderRadius: '4px' }}
+                            >
+                                <option value="movie">فيلم</option>
+                                <option value="series">مسلسل</option>
+                                <option value="show">برنامج تلفزيوني</option>
+                                <option value="theater">مسرحية</option>
+                                <option value="kids">أطفال</option>
+                            </select>
+                        </div>
+                    )}
+
                     {/* Image Upload / URL Section */}
                     <div className="form-group" style={{ marginBottom: '1.5rem' }}>
                         <label>صورة الغلاف</label>
@@ -187,29 +203,35 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
                     </div>
 
                     <div className="form-row">
-                        {type === 'movie' ? (
-                            <div className="form-group">
-                                <label>المدة</label>
-                                <input
-                                    type="text"
-                                    name="duration"
-                                    value={formData.duration}
-                                    onChange={handleChange}
-                                    placeholder="مثلاً 1h 30m"
-                                />
-                            </div>
-                        ) : (
-                            <div className="form-group">
-                                <label>عدد المواسم</label>
-                                <input
-                                    type="text"
-                                    name="seasons"
-                                    value={formData.seasons}
-                                    onChange={handleChange}
-                                    placeholder="مثلاً 2 مواسم"
-                                />
-                            </div>
-                        )}
+                        <div className="form-row">
+                            {/* Only show Duration for movies and theatre */}
+                            {(formData.type === 'movie' || formData.type === 'theater') && (
+                                <div className="form-group">
+                                    <label>المدة</label>
+                                    <input
+                                        type="text"
+                                        name="duration"
+                                        value={formData.duration}
+                                        onChange={handleChange}
+                                        placeholder="مثلاً 1h 30m"
+                                    />
+                                </div>
+                            )}
+
+                            {/* Only show Seasons for series and shows */}
+                            {(formData.type === 'series' || formData.type === 'show') && (
+                                <div className="form-group">
+                                    <label>عدد المواسم</label>
+                                    <input
+                                        type="text"
+                                        name="seasons"
+                                        value={formData.seasons}
+                                        onChange={handleChange}
+                                        placeholder="مثلاً 2 مواسم"
+                                    />
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     <div className="form-group">
