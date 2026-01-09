@@ -45,7 +45,10 @@ const VideoPlayerModal = ({ movie, onClose }) => {
     if (!videoId) {
         return (
             <div className="video-modal-overlay">
-                <button className="video-close-btn" onClick={onClose} style={{ zIndex: 9999 }}>
+                <button className="video-close-btn" onClick={() => {
+                    document.body.style.overflow = 'unset'; // Force unlock
+                    onClose();
+                }} style={{ zIndex: 9999 }}>
                     <X size={32} />
                 </button>
                 <div style={{ color: 'white', textAlign: 'center', direction: 'ltr', maxWidth: '80%' }}>
@@ -61,7 +64,10 @@ const VideoPlayerModal = ({ movie, onClose }) => {
 
     return (
         <div className="video-modal-overlay">
-            <button className="video-close-btn" onClick={onClose} style={{ zIndex: 9999 }}>
+            <button className="video-close-btn" onClick={() => {
+                document.body.style.overflow = 'unset'; // Force unlock
+                onClose();
+            }} style={{ zIndex: 9999 }}>
                 <X size={32} />
             </button>
 

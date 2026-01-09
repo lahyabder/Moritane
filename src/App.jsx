@@ -131,16 +131,20 @@ const App = () => {
             <div style={{ height: '50px' }}></div> {/* Spacing */}
             <Footer />
 
-            <DetailsModal
-              movie={selectedMovie}
-              onClose={() => setSelectedMovie(null)}
-              onPlay={() => handlePlayClick(selectedMovie)}
-            />
+            {selectedMovie && (
+              <DetailsModal
+                movie={selectedMovie}
+                onClose={() => setSelectedMovie(null)}
+                onPlay={() => handlePlayClick(selectedMovie)}
+              />
+            )}
 
-            <VideoPlayerModal
-              movie={playingMovie}
-              onClose={() => setPlayingMovie(null)}
-            />
+            {playingMovie && (
+              <VideoPlayerModal
+                movie={playingMovie}
+                onClose={() => setPlayingMovie(null)}
+              />
+            )}
 
             <AuthModal
               isOpen={isAuthOpen}
