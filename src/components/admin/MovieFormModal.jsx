@@ -39,8 +39,34 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
 
     if (!isOpen) return null;
 
+    // تعريف التصنيفات الخاصة كل نوع محتوى
+    const categoriesByType = {
+        movie: ['أكشن', 'دراما', 'كوميديا', 'رعب', 'خيال علمي', 'رومانسي', 'اجتماعي'],
+        series: ['دراما', 'كوميديا', 'تاريخي', 'اجتماعي', 'رمضاني', 'إثارة'],
+        show: ['حوار', 'ترفيه', 'مسابقات', 'أخبار', 'بودكاست'],
+        documentary: ['تاريخ', 'طبيعة', 'سياسة', 'ثقافة', 'سيرة ذاتية'],
+        theater: ['كوميديا', 'تراجيديا', 'اجتماعي'],
+        kids: ['رسوم متحركة', 'تعليمي', 'أناشيد', 'قصص'],
+        sports: ['كرة القدم', 'سباق الإبل', 'الرماية', 'رياضات قتالية', 'تحليل'],
+        heritage: ['شعر', 'أدب', 'تاريخ', 'فلكلور', 'مدح'],
+        music: ['فيديو كليب', 'حفلات', 'جلسات', 'موسيقى تقليدية']
+    };
+
+    // Get current categories based on selected type, fallback to generic if not found
+    const currentCategories = categoriesByType[formData.type] || ['عام'];
+
     const handleChange = (e) => {
         const { name, value, type: inputType, checked, files } = e.target;
+
+        if (name === 'type') {
+            // When type changes, reset category to the first option of the new type
+            setFormData(prev => ({
+                ...prev,
+                type: value,
+                category: categoriesByType[value]?.[0] || ''
+            }));
+            return;
+        }
 
         if (inputType === 'file') {
             if (files && files[0]) {
@@ -58,6 +84,7 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
         }
     };
 
+    // Helper to handle manual image URL change separately if needed
     const handleUrlChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -193,15 +220,9 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
                                 required
                             >
                                 <option value="">اختر التصنيف</option>
-                                <option value="أفلام">أفلام</option>
-                                <option value="مسلسلات">مسلسلات</option>
-                                <option value="وثائقي">وثائقي</option>
-                                <option value="دراما">دراما</option>
-                                <option value="كوميديا">كوميديا</option>
-                                <option value="موسيقى">موسيقى</option>
-                                <option value="تراث">تراث</option>
-                                <option value="رياضة">رياضة</option>
-                                <option value="للأطفال">للأطفال</option>
+                                {currentCategories.map((cat) => (
+                                    <option key={cat} value={cat}>{cat}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
