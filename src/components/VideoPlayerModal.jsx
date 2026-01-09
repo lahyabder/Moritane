@@ -55,6 +55,8 @@ const VideoPlayerModal = ({ movie, onClose }) => {
             {/* Simple Overlay - ensure it doesn't block clicks */}
             <div className="video-info-overlay" style={{ pointerEvents: 'none' }}>
                 <h3>{movie.title}</h3>
+                {/* Debug Info */}
+                <span style={{ fontSize: '0.8rem', opacity: 0.7, display: 'block' }}>ID: {finalVideoId}</span>
             </div>
         </div>
     );
