@@ -98,6 +98,7 @@ const AdminSeries = () => {
                         <tr style={{ background: '#1a1a1a', borderBottom: '1px solid #222' }}>
                             <th style={{ padding: '1rem', color: '#a3a3a3', fontWeight: '500' }}>المسلسل</th>
                             <th style={{ padding: '1rem', color: '#a3a3a3', fontWeight: '500' }}>المواسم</th>
+                            <th style={{ padding: '1rem', color: '#a3a3a3', fontWeight: '500' }}>الرابط</th>
                             <th style={{ padding: '1rem', color: '#a3a3a3', fontWeight: '500' }}>السنة</th>
                             <th style={{ padding: '1rem', color: '#a3a3a3', fontWeight: '500' }}>التقييم</th>
                             <th style={{ padding: '1rem', color: '#a3a3a3', fontWeight: '500' }}>الإجراءات</th>
@@ -118,6 +119,11 @@ const AdminSeries = () => {
                                         <Layers size={16} color="#666" />
                                         <span>{item.seasons}</span>
                                     </div>
+                                </td>
+                                <td style={{ padding: '1rem', maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', direction: 'ltr', color: item.videoUrl ? '#4ade80' : '#ef4444' }}>
+                                    {item.videoUrl ? '✅ موجود' : '❌ مفقود'}
+                                    <br />
+                                    <span style={{ fontSize: '0.7em', color: '#666' }}>{item.videoUrl || '---'}</span>
                                 </td>
                                 <td style={{ padding: '1rem' }}>{item.year}</td>
                                 <td style={{ padding: '1rem', color: '#eab308', fontWeight: 'bold' }}>{item.rating}</td>
