@@ -10,21 +10,26 @@ const VideoPlayerModal = ({ movie, onClose }) => {
     const getVimeoId = (input) => {
         if (!input) return null;
 
+        // Ensure input is a string
+        const urlString = typeof input === 'string' ? input : String(input);
+
+
         // 1. البحث عن رقم فيديو في روابط vimeo.com
         // يشمل: vimeo.com/12345, vimeo.com/channels/staffpicks/12345, vimeo.com/manage/videos/12345
-        const urlMatch = input.match(/vimeo\.com\/(?:channels\/[\w-]+\/|groups\/[\w-]+\/videos\/|video\/|manage\/videos\/|)(\d+)/);
+        const urlMatch = urlString.match(/vimeo\.com\/(?:channels\/[\w-]+\/|groups\/[\w-]+\/videos\/|video\/|manage\/videos\/|)(\d+)/);
         if (urlMatch && urlMatch[1]) return urlMatch[1];
 
         // 2. البحث عن رقم فيديو في روابط player.vimeo.com (مثل أكواد التضمين)
-        const playerMatch = input.match(/player\.vimeo\.com\/video\/(\d+)/);
+        const playerMatch = urlString.match(/player\.vimeo\.com\/video\/(\d+)/);
         if (playerMatch && playerMatch[1]) return playerMatch[1];
 
         // 3. محاولة أخيرة: البحث عن أي سلسلة أرقام طويلة (7 أرقام أو أكثر) قد تكون هي المعرف
-        const broadMatch = input.match(/(\d{7,})/);
+        const broadMatch = urlString.match(/(\d{7,})/);
         return broadMatch ? broadMatch[0] : "76979999"; // العودة للفيديو الافتراضي في حالة الفشل التام
     };
 
-    const videoId = getVimeoId(movie.videoUrl);
+    const targetUrl = movie.videoUrl || movie.video_url || movie.link || movie.url;
+    const videoId = getVimeoId(targetUrl);
     // إذا لم نجد فيديو، نستخدم الافتراضي
     const finalVideoId = videoId || "76979871";
 

@@ -59,7 +59,11 @@ const DetailsModal = ({ movie, onClose, onPlay }) => {
                     </p>
 
                     <div className="modal-actions">
-                        <button className="btn btn-primary" onClick={onPlay}>
+                        <button className="btn btn-primary" onClick={() => {
+                            console.log("Playing movie from DetailsModal:", movie);
+                            console.log("Video URL being passed:", movie.videoUrl || movie.video_url);
+                            onPlay();
+                        }}>
                             <Play fill="currentColor" size={20} />
                             <span>تشغيل</span>
                         </button>
