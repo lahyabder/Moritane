@@ -102,7 +102,7 @@ const VideoPlayerModal = ({ movie, onClose }) => {
                         alignItems: 'center',
                         gap: '5px'
                     }}>
-                        <img src="/logo.png" alt="" style={{ width: '30px', filter: 'grayscale(100%)' }} />
+                        <img src="/logo_new.png" alt="" style={{ width: '30px', filter: 'grayscale(100%)' }} />
                         <span style={{ color: 'white', fontSize: '14px', fontWeight: 'bold' }}>MORITANE Protected</span>
                     </div>
 

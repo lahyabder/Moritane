@@ -46,9 +46,9 @@ const Navbar = ({ onSearch, user, onLoginClick, onLogout }) => {
       <div className="container navbar-content">
         <div className="navbar-right">
           <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-            <img src="/logo.png" alt="Moritane" style={{ height: '40px', objectFit: 'contain' }} />
+            <img src="/logo_new.png" alt="Moritane" style={{ height: '40px', objectFit: 'contain' }} />
             <span style={{ fontSize: '1.5rem', fontWeight: '800', fontFamily: 'Arial', letterSpacing: '-1px' }}>
-              <span style={{ color: '#ffffff' }}>موري</span><span style={{ color: '#e50914' }}>تان</span>
+              <span style={{ color: '#ffffff' }}>موري</span><span style={{ color: '#F68B2D' }}>تان</span>
             </span>
           </Link>
 

@@ -1,11 +1,22 @@
 :root {
-  --primary-red: #dc2626;
-  --primary-red-hover: #b91c1c;
-  --bg-black: #0a0a0a;
-  --bg-dark-gray: #171717;
-  --text-white: #ffffff;
-  --text-gray: #a3a3a3;
-  --overlay-gradient: linear-gradient(to top, #0a0a0a, transparent);
+  /* Mortan Color System */
+  --primary-orange: #F68B2D;
+  /* Primary Accent */
+  --primary-orange-hover: #FFB062;
+  /* Light Orange for Hover */
+
+  --bg-deep-blue: #3A3F8F;
+  /* Primary Base (Headers, Containers) */
+  --bg-night-blue: #252863;
+  /* Dark Mode Background (Main Body) */
+
+  --text-white: #FFFFFF;
+  /* Functional White */
+  --text-gray: #e2e8f0;
+  /* Light Gray for secondary text */
+
+  /* Gradients */
+  --overlay-gradient: linear-gradient(to top, var(--bg-night-blue), transparent);
   --header-height: 80px;
 }
 
@@ -17,7 +28,8 @@
 
 body {
   font-family: 'Cairo', sans-serif;
-  background-color: var(--bg-black);
+  background-color: var(--bg-night-blue);
+  /* Updated Background */
   color: var(--text-white);
   line-height: 1.5;
   overflow-x: hidden;
@@ -26,6 +38,11 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--primary-orange);
 }
 
 button {
@@ -52,25 +69,31 @@ button {
   font-size: 1rem;
 }
 
+/* Primary Button (Orange) */
 .btn-primary {
-  background-color: var(--primary-red);
+  background-color: var(--primary-orange);
   color: white;
+  /* Or slightly dark text if prefer contrast, but white works on orange */
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-red-hover);
+  background-color: var(--primary-orange-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+  box-shadow: 0 4px 12px rgba(246, 139, 45, 0.4);
+  /* Orange Shadow */
 }
 
+/* Secondary Button (Glassmorphic) */
 .btn-secondary {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.15);
   color: white;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--primary-orange);
 }
 
 /* Scrollbar */
@@ -79,14 +102,14 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-black);
+  background: var(--bg-night-blue);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--bg-deep-blue);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--primary-orange);
 }
