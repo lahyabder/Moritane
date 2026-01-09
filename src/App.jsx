@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import DetailsModal from './components/DetailsModal';
@@ -28,6 +28,17 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [user, setUser] = useState(null);
+
+  const location = useLocation();
+
+  // Close modals on route change (navigation)
+  useEffect(() => {
+    setSelectedMovie(null);
+    setPlayingMovie(null);
+    setIsAuthOpen(false);
+    // Ensure body scroll is unlocked
+    document.body.style.overflow = 'unset';
+  }, [location.pathname]);
 
   // Combine all data for search
   const allContent = useMemo(() => {
@@ -59,7 +70,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <>
       <Routes>
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
@@ -139,7 +150,7 @@ const App = () => {
           </div>
         } />
       </Routes>
-    </Router>
+    </>
   );
 }
 
