@@ -6,17 +6,30 @@ import './VideoPlayerModal.css';
 const VideoPlayerModal = ({ movie, onClose }) => {
     if (!movie) return null;
 
-    // Helper to safely extract Vimeo ID from any string
-    const getVimeoId = (url) => {
-        if (!url) return "76979871"; // Demo ID
+    // دالة ذكية لاستخراج رقم الفيديو من أي رابط أو كود
+    const getVimeoId = (input) => {
+        if (!input) return null;
 
-        // Try to match just segments of digits, likely the ID
-        const matches = url.match(/(\d{5,})/);
-        return matches ? matches[0] : "76979871";
+        // 1. البحث عن رقم فيديو في روابط vimeo.com
+        // يشمل: vimeo.com/12345, vimeo.com/channels/staffpicks/12345, vimeo.com/manage/videos/12345
+        const urlMatch = input.match(/vimeo\.com\/(?:channels\/[\w-]+\/|groups\/[\w-]+\/videos\/|video\/|manage\/videos\/|)(\d+)/);
+        if (urlMatch && urlMatch[1]) return urlMatch[1];
+
+        // 2. البحث عن رقم فيديو في روابط player.vimeo.com (مثل أكواد التضمين)
+        const playerMatch = input.match(/player\.vimeo\.com\/video\/(\d+)/);
+        if (playerMatch && playerMatch[1]) return playerMatch[1];
+
+        // 3. محاولة أخيرة: البحث عن أي سلسلة أرقام طويلة (7 أرقام أو أكثر) قد تكون هي المعرف
+        const broadMatch = input.match(/(\d{7,})/);
+        return broadMatch ? broadMatch[0] : "76979999"; // العودة للفيديو الافتراضي في حالة الفشل التام
     };
 
     const videoId = getVimeoId(movie.videoUrl);
-    const embedUrl = `https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`;
+    // إذا لم نجد فيديو، نستخدم الافتراضي
+    const finalVideoId = videoId || "76979871";
+
+    // بناء رابط التضمين مع تفعيل التشغيل التلقائي
+    const embedUrl = `https://player.vimeo.com/video/${finalVideoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`;
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
