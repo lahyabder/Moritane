@@ -71,7 +71,8 @@ const VideoPlayerModal = ({ movie, onClose }) => {
                 <X size={32} />
             </button>
 
-            <div className="video-container">
+            {/* Container with Right-Click Protection */}
+            <div className="video-container" onContextMenu={(e) => e.preventDefault()}>
                 <iframe
                     src={embedUrl}
                     frameBorder="0"
@@ -79,6 +80,46 @@ const VideoPlayerModal = ({ movie, onClose }) => {
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                     title={movie.title}
                 ></iframe>
+
+                {/* Security Watermark System */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    pointerEvents: 'none', // Allows clicks to pass through to play/pause
+                    zIndex: 2,
+                    overflow: 'hidden'
+                }}>
+                    {/* Floating Brand Watermark */}
+                    <div style={{
+                        position: 'absolute',
+                        top: '5%',
+                        right: '5%',
+                        opacity: 0.3,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px'
+                    }}>
+                        <img src="/logo.png" alt="" style={{ width: '30px', filter: 'grayscale(100%)' }} />
+                        <span style={{ color: 'white', fontSize: '14px', fontWeight: 'bold' }}>MORITANE Protected</span>
+                    </div>
+
+                    {/* Random Position Floating ID (The 'Netflix' way to trace leakers) */}
+                    <div style={{
+                        position: 'absolute',
+                        bottom: '10%',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        opacity: 0.1,
+                        fontSize: '12px',
+                        color: 'white',
+                        fontFamily: 'monospace'
+                    }}>
+                        ID: {Math.random().toString(36).substr(2, 9).toUpperCase()}
+                    </div>
+                </div>
             </div>
 
             <div className="video-info-overlay" style={{ pointerEvents: 'none' }}>
