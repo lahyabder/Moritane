@@ -1,15 +1,20 @@
 /* Custom Moritane Video Player Styles with anti-piracy features */
 
 .custom-player-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    /* Ensure it's above everything including Navbar */
     background: #000;
     display: flex;
     align-items: center;
     justify-content: center;
     user-select: none;
-    /* Can't select text */
     -webkit-user-select: none;
     cursor: default;
-    /* Hide default cursor if needed */
 }
 
 .vimeo-embed-container {
