@@ -174,8 +174,53 @@ export const api = {
     },
 
     // Live Channels
+    // Live Channels
     getLiveChannels: async () => {
-        return [];
+        try {
+            const { data, error } = await supabase
+                .from('content')
+                .select('*')
+                .eq('type', 'live')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+            return data ? data.map(mapContent) : [];
+        } catch (error) {
+            console.error("Error fetching channels:", error);
+            return [];
+        }
+    },
+
+    createChannel: async (channelData) => {
+        const dbPayload = {
+            title: channelData.title,
+            description: channelData.description,
+            image_url: channelData.image,
+            video_url: channelData.videoUrl,
+            category: 'live',
+            type: 'live',
+            is_new: true
+        };
+        const { data, error } = await supabase.from('content').insert([dbPayload]).select().single();
+        if (error) throw error;
+        return mapContent(data);
+    },
+
+    updateChannel: async (id, channelData) => {
+        const dbPayload = {
+            title: channelData.title,
+            description: channelData.description,
+            image_url: channelData.image,
+            video_url: channelData.videoUrl,
+        };
+        const { data, error } = await supabase.from('content').update(dbPayload).eq('id', id).select().single();
+        if (error) throw error;
+        return mapContent(data);
+    },
+
+    deleteChannel: async (id) => {
+        const { error } = await supabase.from('content').delete().eq('id', id);
+        if (error) throw error;
     },
 
     getHeroContent: async () => {

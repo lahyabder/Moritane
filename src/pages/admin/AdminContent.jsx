@@ -114,7 +114,8 @@ const AdminContent = () => {
             kids: 'أطفال',
             sports: 'رياضة',
             heritage: 'تراث',
-            music: 'موسيقى'
+            music: 'موسيقى',
+            live: 'بث مباشر'
         };
         return labels[type] || type;
     };
@@ -159,6 +160,7 @@ const AdminContent = () => {
                         { id: 'sports', label: 'رياضة' },
                         { id: 'heritage', label: 'تراث' },
                         { id: 'music', label: 'موسيقى' },
+                        { id: 'live', label: 'بث مباشر' },
                     ].map(type => (
                         <button
                             key={type.id}
