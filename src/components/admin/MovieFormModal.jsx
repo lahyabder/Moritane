@@ -50,6 +50,7 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
         sports: ['كرة القدم', 'سباق الإبل', 'الرماية', 'رياضات قتالية', 'تحليل'],
         heritage: ['شعر', 'أدب', 'تاريخ', 'فلكلور', 'مدح'],
         music: ['فيديو كليب', 'حفلات', 'جلسات', 'موسيقى تقليدية'],
+        podcast: ['ثقافة', 'قصص', 'تقنية', 'مجتمع', 'حوار', 'تطوير ذات', 'ديني'],
         live: ['أخبار', 'عام', 'رياضة', 'قرآن كريم']
     };
 
@@ -128,6 +129,7 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
                                 <option value="sports">رياضة</option>
                                 <option value="heritage">تراث</option>
                                 <option value="music">موسيقى</option>
+                                <option value="podcast">بودكاست</option>
                                 <option value="live">بث مباشر</option>
                             </select>
                         </div>
