@@ -190,6 +190,45 @@ const VideoPlayerModal = ({ movie, onClose }) => {
                         </div>
                     </div>
 
+                    {/* Security Watermark System */}
+                    <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        pointerEvents: 'none', // Allows clicks to pass through to play/pause
+                        zIndex: 2,
+                        overflow: 'hidden'
+                    }}>
+                        {/* Floating Brand Watermark */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '5%',
+                            right: '5%',
+                            opacity: 0.5,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '5px'
+                        }}>
+                            <img src="/logo_full.png" alt="" style={{ width: '80px', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }} />
+                        </div>
+
+                        {/* Random Position Floating ID (The 'Netflix' way to trace leakers) */}
+                        <div style={{
+                            position: 'absolute',
+                            bottom: '10%',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            opacity: 0.1,
+                            fontSize: '12px',
+                            color: 'white',
+                            fontFamily: 'monospace'
+                        }}>
+                            ID: {Math.random().toString(36).substr(2, 9).toUpperCase()}
+                        </div>
+                    </div>
+
                     <div className="controls-row">
                         <div className="controls-left">
                             <button onClick={togglePlay} className="control-btn">
@@ -216,7 +255,7 @@ const VideoPlayerModal = ({ movie, onClose }) => {
                         </div>
 
                         <div className="controls-right">
-                            <img src="/logo_new.png" alt="Moritane" className="player-logo" />
+                            <img src="/logo_icon.png" alt="Moritane" className="player-logo" />
                             <button onClick={toggleFullscreen} className="control-btn">
                                 {isFullscreen ? <Minimize size={24} /> : <Maximize size={24} />}
                             </button>

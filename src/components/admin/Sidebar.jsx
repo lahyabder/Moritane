@@ -6,11 +6,9 @@ import './Sidebar.css';
 const Sidebar = () => {
     return (
         <aside className="admin-sidebar">
-            <div className="sidebar-logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <img src="/logo_new.png" alt="Logo" style={{ height: '32px' }} />
-                <h2 style={{ fontSize: '1.2rem', margin: 0, color: 'white' }}>
-                    موريتان <span style={{ color: '#F68B2D', fontSize: '0.8em' }}>أدمن</span>
-                </h2>
+            <div className="sidebar-logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <img src="/logo_full.png" alt="Logo" style={{ height: '45px' }} />
+                <span style={{ fontSize: '0.9rem', color: '#F68B2D', fontWeight: 'bold', alignSelf: 'flex-end', marginBottom: '5px' }}>أدمن</span>
             </div>
 
             <nav className="sidebar-nav">
