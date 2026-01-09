@@ -7,7 +7,12 @@ const Sidebar = () => {
     return (
         <aside className="admin-sidebar">
             <div className="sidebar-header">
-                <h2 className="sidebar-logo">موريتان <span>أدمن</span></h2>
+                <div className="sidebar-logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <img src="/logo.png" alt="Logo" style={{ height: '32px' }} />
+                    <h2 style={{ fontSize: '1.2rem', margin: 0, color: 'white' }}>
+                        موريتان <span style={{ color: '#e50914', fontSize: '0.8em' }}>أدمن</span>
+                    </h2>
+                </div>
             </div>
 
             <nav className="sidebar-nav">

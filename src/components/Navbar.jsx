@@ -45,7 +45,12 @@ const Navbar = ({ onSearch, user, onLoginClick, onLogout }) => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-content">
         <div className="navbar-right">
-          <Link to="/" className="logo">موريتان</Link>
+          <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+            <img src="/logo.png" alt="Moritane" style={{ height: '40px', objectFit: 'contain' }} />
+            <span style={{ fontSize: '1.5rem', fontWeight: '800', fontFamily: 'Arial', letterSpacing: '-1px' }}>
+              <span style={{ color: '#ffffff' }}>موري</span><span style={{ color: '#e50914' }}>تان</span>
+            </span>
+          </Link>
 
           {!isSearchOpen && (
             <ul className="nav-links">
