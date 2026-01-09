@@ -19,15 +19,9 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/admin/movies" className={({ isActive }) => isActive ? 'active' : ''}>
+                        <NavLink to="/admin/content" className={({ isActive }) => isActive ? 'active' : ''}>
                             <Film size={20} />
-                            <span>الأفلام</span>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/admin/series" className={({ isActive }) => isActive ? 'active' : ''}>
-                            <Tv size={20} />
-                            <span>المسلسلات</span>
+                            <span>مكتبة المحتوى</span>
                         </NavLink>
                     </li>
                     <li>

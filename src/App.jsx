@@ -11,6 +11,7 @@ import Live from './pages/Live';
 import Shows from './pages/Shows';
 import AdminLayout from './pages/admin/AdminLayout';
 import Dashboard from './pages/admin/Dashboard';
+import AdminContent from './pages/admin/AdminContent';
 import AdminMovies from './pages/admin/AdminMovies';
 import AdminSeries from './pages/admin/AdminSeries';
 import AdminUsers from './pages/admin/AdminUsers';
@@ -63,6 +64,7 @@ const App = () => {
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="content" element={<AdminContent />} />
           <Route path="movies" element={<AdminMovies />} />
           <Route path="series" element={<AdminSeries />} />
           <Route path="live" element={<AdminLive />} />
