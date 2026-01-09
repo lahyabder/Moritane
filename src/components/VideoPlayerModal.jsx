@@ -28,8 +28,8 @@ const VideoPlayerModal = ({ movie, onClose }) => {
     // إذا لم نجد فيديو، نستخدم الافتراضي
     const finalVideoId = videoId || "76979871";
 
-    // بناء رابط التضمين مع تفعيل التشغيل التلقائي
-    const embedUrl = `https://player.vimeo.com/video/${finalVideoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`;
+    // بناء رابط التضمين مع تفعيل التشغيل التلقائي وكتم الصوت (لتجاوز حظر المتصفحات)
+    const embedUrl = `https://player.vimeo.com/video/${finalVideoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1`;
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
