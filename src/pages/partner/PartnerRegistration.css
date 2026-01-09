@@ -1,0 +1,232 @@
+.partner-page {
+    padding: 100px 20px 50px;
+    background-color: var(--bg-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.partner-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.partner-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.partner-header h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.partner-header p {
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.steps-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.steps-indicator .step {
+    background: #333;
+    color: #888;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.steps-indicator .step.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.steps-indicator .line {
+    width: 60px;
+    height: 2px;
+    background: #333;
+    margin: 0 10px;
+}
+
+/* Contract Styles */
+.contract-box {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #333;
+}
+
+.contract-content {
+    background: #111;
+    padding: 20px;
+    border-radius: 8px;
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+    line-height: 1.8;
+}
+
+.contract-content h3 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+
+.contract-content h4 {
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contract-content p,
+.contract-content ul {
+    color: #ddd;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.contract-content ul {
+    list-style-type: disc;
+    padding-right: 25px;
+}
+
+.agreement-form {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-right: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.checkbox-container:hover input~.checkmark {
+    background-color: #444;
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--primary-color);
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Registration Form Styles */
+.registration-form {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.btn-gold {
+    background: var(--secondary-color);
+    color: #000;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-gold:hover {
+    opacity: 0.9;
+}

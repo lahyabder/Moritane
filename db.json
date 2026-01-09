@@ -1,0 +1,221 @@
+{
+  "movies": [
+    {
+      "id": "1",
+      "title": "ليالي نواكشوط",
+      "year": "2024",
+      "rating": "4.8",
+      "image": "https://images.unsplash.com/photo-1510526085526-78b172d80d22?q=80&w=2600&auto=format&fit=crop",
+      "isNew": true,
+      "category": "أفلام",
+      "duration": "1h 45m",
+      "description": "دراما اجتماعية تدور أحداثها في أحياء نواكشوط الشعبية."
+    },
+    {
+      "id": "2",
+      "title": "القوافل",
+      "year": "2023",
+      "rating": "4.5",
+      "image": "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?q=80&w=2573&auto=format&fit=crop",
+      "isNew": false,
+      "category": "وثائقي",
+      "duration": "52m",
+      "description": "تاريخ القوافل التجارية القديمة عبر الصحراء."
+    },
+    {
+      "id": "3",
+      "title": "صيد الأطلسي",
+      "year": "2024",
+      "rating": "4.9",
+      "image": "https://images.unsplash.com/photo-1456428746243-a417336b1773?q=80&w=2670&auto=format&fit=crop",
+      "isNew": true,
+      "category": "أفلام",
+      "duration": "2h 10m",
+      "description": "قصة صياد شاب يواجه تحديات المحيط."
+    },
+    {
+      "id": "4",
+      "title": "سراب الصحراء",
+      "year": "2022",
+      "rating": "4.2",
+      "image": "https://images.unsplash.com/photo-1549497538-cd278ea22920?q=80&w=2621&auto=format&fit=crop",
+      "isNew": false,
+      "category": "أفلام",
+      "duration": "1h 30m",
+      "description": "غموض وإثارة في قلب الصحراء الموريتانية."
+    },
+    {
+      "id": "5",
+      "title": "العودة",
+      "year": "2025",
+      "rating": "5.0",
+      "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=2574&auto=format&fit=crop",
+      "isNew": true,
+      "category": "أفلام",
+      "duration": "1h 50m",
+      "description": "رحلة عودة مؤثرة إلى الجذور."
+    },
+    {
+      "id": "6",
+      "title": "أساطير قديمة",
+      "year": "2021",
+      "rating": "4.1",
+      "image": "https://images.unsplash.com/photo-1512100356356-de1b84283e18?q=80&w=2575&auto=format&fit=crop",
+      "isNew": false,
+      "category": "وثائقي",
+      "duration": "45m",
+      "description": "حكايات الأجداد والأساطير المتوارثة."
+    },
+    {
+      "id": "7",
+      "title": "حياة البادية",
+      "year": "2024",
+      "rating": "4.7",
+      "image": "https://images.unsplash.com/photo-1558981285-6f0c94958bb6?q=80&w=2670&auto=format&fit=crop",
+      "isNew": true,
+      "category": "وثائقي",
+      "duration": "1h 00m",
+      "description": "توثيق يوميات الحياة في البادية الموريتانية."
+    },
+    {
+      "id": "8",
+      "title": "الموسيقى الخالدة",
+      "year": "2024",
+      "rating": "4.8",
+      "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2670&auto=format&fit=crop",
+      "isNew": false,
+      "category": "موسيقى",
+      "duration": "1h 15m",
+      "description": "حفلات موسيقية لأشهر الفنانين الموريتانيين."
+    },
+    {
+      "id": "9",
+      "title": "الشاي الموريتاني",
+      "year": "2023",
+      "rating": "4.9",
+      "image": "https://images.unsplash.com/photo-1576092762791-dd9e2220abd1?q=80&w=2670&auto=format&fit=crop",
+      "isNew": false,
+      "category": "ثقافة",
+      "duration": "30m",
+      "description": "فن وطقوس تحضير الشاي (أتاي)."
+    },
+    {
+      "id": "3763",
+      "title": "والدك .. على الأرجح",
+      "description": "والدك علي الارجح",
+      "image": "",
+      "year": "2025",
+      "rating": "1",
+      "category": "أفلام",
+      "duration": "30",
+      "seasons": "",
+      "isNew": true
+    }
+  ],
+  "series": [
+    {
+      "id": "101",
+      "title": "أبناء النهر",
+      "year": "2023",
+      "rating": "4.6",
+      "image": "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2670&auto=format&fit=crop",
+      "isNew": true,
+      "category": "مسلسلات",
+      "seasons": "2 مواسم"
+    },
+    {
+      "id": "102",
+      "title": "المدينة القديمة S1",
+      "year": "2022",
+      "rating": "4.5",
+      "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2568&auto=format&fit=crop",
+      "isNew": false,
+      "category": "مسلسلات",
+      "seasons": "1 موسم"
+    },
+    {
+      "id": "103",
+      "title": "رحلة الشتاء",
+      "year": "2024",
+      "rating": "4.8",
+      "image": "https://images.unsplash.com/photo-1610123598195-26d9d4645279?q=80&w=2670&auto=format&fit=crop",
+      "isNew": true,
+      "category": "مسلسلات",
+      "seasons": "1 موسم"
+    },
+    {
+      "id": "104",
+      "title": "أسرار",
+      "year": "2023",
+      "rating": "4.3",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+      "isNew": false,
+      "category": "مسلسلات",
+      "seasons": "3 مواسم"
+    },
+    {
+      "id": "105",
+      "title": "ظلال الماضي",
+      "year": "2025",
+      "rating": "4.7",
+      "image": "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?q=80&w=2673&auto=format&fit=crop",
+      "isNew": true,
+      "category": "مسلسلات",
+      "seasons": "1 موسم"
+    }
+  ],
+  "hero": {
+    "id": 0,
+    "title": "أصوات الصحراء",
+    "description": "رحلة موسيقية ملحمية عبر الكثبان الذهبية، نستكشف فيها أعمق الألحان الموريتانية الأصيلة وأجمل الأصوات التي تحكي قصص الصحراء والتراث العريق تحت ضوء النجوم.",
+    "image": "https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?q=80&w=2600&auto=format&fit=crop",
+    "year": "2025",
+    "rating": "9.8",
+    "duration": "2h 30m",
+    "category": "موسيقى"
+  },
+  "live": [
+    {
+      "id": "1",
+      "name": "الموريتانية",
+      "url": "https://.../stream1",
+      "status": "مباشر",
+      "viewers": 1200,
+      "category": "عام"
+    },
+    {
+      "id": "2",
+      "name": "الرياضية",
+      "url": "https://.../stream2",
+      "status": "مباشر",
+      "viewers": 3500,
+      "category": "رياضة"
+    },
+    {
+      "id": "3",
+      "name": "الثقافية",
+      "url": "https://.../stream3",
+      "status": "إيقاف",
+      "viewers": 0,
+      "category": "ثقافة"
+    },
+    {
+      "id": "4",
+      "name": "إذاعة القرآن",
+      "url": "https://.../stream4",
+      "status": "مباشر",
+      "viewers": 800,
+      "category": "دين"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "محمد أحمد",
+      "email": "mohamed@example.com",
+      "plan": "بريميوم",
+      "role": "مستخدم",
+      "status": "نشط"
+    }
+  ]
+}
