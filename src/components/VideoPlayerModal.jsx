@@ -36,6 +36,24 @@ const VideoPlayerModal = ({ movie, onClose }) => {
         return () => { document.body.style.overflow = 'unset'; };
     }, []);
 
+    // If no valid ID found, show error state instead of black screen
+    if (!videoId) {
+        return (
+            <div className="video-modal-overlay">
+                <button className="video-close-btn" onClick={onClose} style={{ zIndex: 9999 }}>
+                    <X size={32} />
+                </button>
+                <div style={{ color: 'white', textAlign: 'center', direction: 'ltr', maxWidth: '80%' }}>
+                    <h2>⚠️ Video Error</h2>
+                    <p>Could not extract Vimeo ID from URL:</p>
+                    <code style={{ background: '#333', padding: '10px', display: 'block', margin: '10px 0', wordBreak: 'break-all' }}>
+                        {movie.videoUrl || "No URL provided"}
+                    </code>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="video-modal-overlay">
             <button className="video-close-btn" onClick={onClose} style={{ zIndex: 9999 }}>
@@ -52,11 +70,9 @@ const VideoPlayerModal = ({ movie, onClose }) => {
                 ></iframe>
             </div>
 
-            {/* Simple Overlay - ensure it doesn't block clicks */}
             <div className="video-info-overlay" style={{ pointerEvents: 'none' }}>
                 <h3>{movie.title}</h3>
-                {/* Debug Info */}
-                <span style={{ fontSize: '0.8rem', opacity: 0.7, display: 'block' }}>ID: {finalVideoId}</span>
+                <span style={{ fontSize: '10px', opacity: 0.5 }}>Source: {movie.videoUrl?.substring(0, 30)}...</span>
             </div>
         </div>
     );
