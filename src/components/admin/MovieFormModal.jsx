@@ -93,9 +93,13 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
                             >
                                 <option value="movie">فيلم</option>
                                 <option value="series">مسلسل</option>
-                                <option value="show">برنامج تلفزيوني</option>
+                                <option value="show">برنامج</option>
+                                <option value="documentary">وثائقي</option>
                                 <option value="theater">مسرحية</option>
                                 <option value="kids">أطفال</option>
+                                <option value="sports">رياضة</option>
+                                <option value="heritage">تراث</option>
+                                <option value="music">موسيقى</option>
                             </select>
                         </div>
                     )}

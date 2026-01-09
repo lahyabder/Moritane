@@ -109,8 +109,12 @@ const AdminContent = () => {
             movie: 'فيلم',
             series: 'مسلسل',
             show: 'برنامج',
+            documentary: 'وثائقي',
             theater: 'مسرحية',
-            kids: 'أطفال'
+            kids: 'أطفال',
+            sports: 'رياضة',
+            heritage: 'تراث',
+            music: 'موسيقى'
         };
         return labels[type] || type;
     };
@@ -149,8 +153,12 @@ const AdminContent = () => {
                         { id: 'movie', label: 'أفلام' },
                         { id: 'series', label: 'مسلسلات' },
                         { id: 'show', label: 'برامج' },
+                        { id: 'documentary', label: 'وثائقي' },
                         { id: 'theater', label: 'مسرحيات' },
                         { id: 'kids', label: 'أطفال' },
+                        { id: 'sports', label: 'رياضة' },
+                        { id: 'heritage', label: 'تراث' },
+                        { id: 'music', label: 'موسيقى' },
                     ].map(type => (
                         <button
                             key={type.id}
