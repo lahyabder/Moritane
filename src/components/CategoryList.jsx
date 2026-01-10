@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CategoryList.css';
 
 const categories = [
@@ -15,6 +16,20 @@ const categories = [
 ];
 
 const CategoryList = ({ selectedCategory = "الكل", onSelectCategory }) => {
+    const navigate = useNavigate();
+
+    const handleCategoryClick = (cat) => {
+        if (cat === "أفلام") {
+            navigate('/movies');
+        } else if (cat === "مسلسلات") {
+            navigate('/series');
+        } else {
+            if (onSelectCategory) {
+                onSelectCategory(cat);
+            }
+        }
+    };
+
     return (
         <div className="category-list">
             <div className="category-track">
@@ -22,7 +37,7 @@ const CategoryList = ({ selectedCategory = "الكل", onSelectCategory }) => {
                     <button
                         key={index}
                         className={`category-pill ${selectedCategory === cat ? 'active' : ''}`}
-                        onClick={() => onSelectCategory && onSelectCategory(cat)}
+                        onClick={() => handleCategoryClick(cat)}
                     >
                         {cat}
                     </button>

@@ -7,7 +7,9 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-content">
                 <div className="footer-column">
-                    <a href="/" className="footer-logo">موريتان</a>
+                    <a href="/" className="footer-logo">
+                        <img src="/logo_full.png" alt="Moritane" style={{ height: '40px', objectFit: 'contain', marginBottom: '1rem' }} />
+                    </a>
                     <p>منصتك الأولى للمحتوى الموريتاني الأصيل. أفلام، مسلسلات، وبرامج وثائقية تعكس ثقافتنا وتراثنا.</p>
                     <div className="footer-social">
                         <a href="#" className="social-icon"><Facebook size={20} /></a>
