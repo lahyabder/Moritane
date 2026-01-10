@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Film, Tv, Radio, Users, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, Film, Tv, Radio, Users, Settings, LogOut, CreditCard } from 'lucide-react';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -35,6 +35,12 @@ const Sidebar = () => {
                         <NavLink to="/admin/users" className={({ isActive }) => isActive ? 'active' : ''}>
                             <Users size={20} />
                             <span>المستخدمين</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/admin/subscriptions" className={({ isActive }) => isActive ? 'active' : ''}>
+                            <CreditCard size={20} />
+                            <span>الاشتراكات</span>
                         </NavLink>
                     </li>
                     <li>

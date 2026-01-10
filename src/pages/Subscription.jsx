@@ -1,173 +1,116 @@
-import React, { useState } from 'react';
-import { Check, Smartphone, CreditCard } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Subscription.css';
-
-const plans = [
-    {
-        id: 'free',
-        name: 'مجاني',
-        price: '0',
-        currency: 'MRU',
-        period: '/شهر',
-        features: [
-            'محتوى محدود',
-            'دقة قياسية (SD)',
-            'يحتوي على إعلانات',
-            'جهاز واحد'
-        ],
-        recommended: false
-    },
-    {
-        id: 'premium',
-        name: 'بريميوم',
-        price: '200',
-        currency: 'MRU',
-        period: '/شهر',
-        features: [
-            'وصول كامل للمحتوى',
-            'دقة عالية (HD)',
-            'بدون إعلانات',
-            '3 أجهزة في وقت واحد',
-            'تحميل للمشاهدة أوفلاين'
-        ],
-        recommended: true
-    },
-    {
-        id: 'family',
-        name: 'عائلي',
-        price: '350',
-        currency: 'MRU',
-        period: '/شهر',
-        features: [
-            'كل مميزات البريميوم',
-            'دقة فائقة (4K)',
-            '5 أجهزة في وقت واحد',
-            'حسابات منفصلة للأطفال'
-        ],
-        recommended: false
-    }
-];
+import { Check, Clock } from 'lucide-react';
 
 const Subscription = () => {
-    const [selectedPlan, setSelectedPlan] = useState('premium');
-    const [step, setStep] = useState(1); // 1: Select Plan, 2: Payment
-    const [paymentMethod, setPaymentMethod] = useState('bankily');
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    const handleSubscribe = () => {
-        setStep(2);
+    // Set deadline to 6 months from now
+    const calculateTimeLeft = () => {
+        // Hardcoded date for demo: 6 months from launch (approx June 2026)
+        // Or dynamic: new Date().setMonth(new Date().getMonth() + 6)
+        const difference = +new Date('2026-06-30') - +new Date();
+        let timeLeft = {};
+
+        if (difference > 0) {
+            timeLeft = {
+                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                minutes: Math.floor((difference / 1000 / 60) % 60),
+                seconds: Math.floor((difference / 1000) % 60)
+            };
+        }
+        return timeLeft;
     };
 
-    const handlePayment = (e) => {
-        e.preventDefault();
-        alert('تمت عملية الدفع بنجاح! شكراً لاشتراكك.');
-        // In a real app, redirect or update user state here
-        window.location.href = '/';
-    };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+        return () => clearTimeout(timer);
+    });
+
+    const plans = [
+        {
+            id: 'free_launch',
+            name: 'عرض الإطلاق',
+            price: 'مجاناً',
+            period: 'لمدة 6 أشهر',
+            features: [
+                'وصول كامل لكل المحتوى',
+                'جودة عالية FHD & 4K',
+                'بدون أي إعلانات'
+            ],
+            buttonText: 'احصل على العرض الآن',
+            active: true,
+            highlight: true,
+            badge: 'لفترة محدودة'
+        }
+    ];
 
     return (
         <div className="subscription-page">
             <div className="container">
-                {step === 1 ? (
-                    <>
-                        <header className="subscription-header">
-                            <h1>اختر الخطة المناسبة لك</h1>
-                            <p>إلغاء الاشتراك في أي وقت. استمتع بأفضل المحتوى الموريتاني.</p>
-                        </header>
-
-                        <div className="plans-grid">
-                            {plans.map((plan) => (
-                                <div
-                                    key={plan.id}
-                                    className={`plan-card ${selectedPlan === plan.id ? 'selected' : ''} ${plan.recommended ? 'recommended' : ''}`}
-                                    onClick={() => setSelectedPlan(plan.id)}
-                                >
-                                    {plan.recommended && <div className="recommended-badge">الأكثر شيوعاً</div>}
-                                    <h3>{plan.name}</h3>
-                                    <div className="price">
-                                        <span className="amount">{plan.price}</span>
-                                        <span className="currency">{plan.currency}</span>
-                                        <span className="period">{plan.period}</span>
-                                    </div>
-                                    <ul className="features-list">
-                                        {plan.features.map((feature, idx) => (
-                                            <li key={idx}>
-                                                <Check size={16} className="check-icon" />
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <button
-                                        className={`btn plan-btn ${selectedPlan === plan.id ? 'btn-primary' : 'btn-secondary'}`}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setSelectedPlan(plan.id);
-                                            handleSubscribe();
-                                        }}
-                                    >
-                                        {selectedPlan === plan.id ? 'واصل للدفع' : 'اختر هذه الخطة'}
-                                    </button>
-                                </div>
-                            ))}
+                <div className="sub-header">
+                    <div className="offer-timer">
+                        <span className="timer-label">ينتهي العرض المجاني خلال:</span>
+                        <div className="timer-digits">
+                            <div className="time-unit">
+                                <span className="number">{timeLeft.seconds || 0}</span>
+                                <span className="label">ثانية</span>
+                            </div>
+                            <span className="colon">:</span>
+                            <div className="time-unit">
+                                <span className="number">{timeLeft.minutes || 0}</span>
+                                <span className="label">دقيقة</span>
+                            </div>
+                            <span className="colon">:</span>
+                            <div className="time-unit">
+                                <span className="number">{timeLeft.hours || 0}</span>
+                                <span className="label">ساعة</span>
+                            </div>
+                            <span className="colon">:</span>
+                            <div className="time-unit">
+                                <span className="number">{timeLeft.days || 180}</span>
+                                <span className="label">يوم</span>
+                            </div>
                         </div>
-                    </>
-                ) : (
-                    <div className="payment-container">
-                        <button className="back-btn" onClick={() => setStep(1)}>عودة للخطط</button>
-                        <h2>إتمام الدفع</h2>
-                        <div className="selected-plan-summary">
-                            <p>أنت مشترك في خطة: <strong>{plans.find(p => p.id === selectedPlan)?.name}</strong></p>
-                            <p className="total-price">{plans.find(p => p.id === selectedPlan)?.price} MRU / شهرياً</p>
-                        </div>
+                    </div>
 
-                        <form onSubmit={handlePayment} className="payment-form">
-                            <h3>اختر طريقة الدفع</h3>
-                            <div className="payment-methods">
-                                <div
-                                    className={`payment-method ${paymentMethod === 'bankily' ? 'active' : ''}`}
-                                    onClick={() => setPaymentMethod('bankily')}
-                                >
-                                    <Smartphone size={24} />
-                                    <span>بنكيلي / مصروفي</span>
+                    <h1>استمتع بـ 6 أشهر مجانية!</h1>
+                    <p>احتفالاً بإطلاق منصة موريتان، نقدم لك اشتراكاً ذهبياً مجانياً بالكامل.</p>
+                </div>
+
+                <div className="plans-grid single-plan">
+                    {plans.map((plan) => (
+                        <div key={plan.id} className={`plan-card ${plan.highlight ? 'highlighted' : ''}`}>
+                            {plan.badge && <div className="plan-badge"><Clock size={16} style={{ marginRight: 5 }} /> {plan.badge}</div>}
+                            <div className="plan-header">
+                                <h3>{plan.name}</h3>
+                                <div className="plan-price">
+                                    <span className="amount" style={{ color: '#4ade80' }}>{plan.price}</span>
                                 </div>
-                                <div
-                                    className={`payment-method ${paymentMethod === 'card' ? 'active' : ''}`}
-                                    onClick={() => setPaymentMethod('card')}
-                                >
-                                    <CreditCard size={24} />
-                                    <span>بطاقة بنكية</span>
-                                </div>
+                                <span className="period">{plan.period}</span>
                             </div>
 
-                            {paymentMethod === 'bankily' ? (
-                                <div className="form-group">
-                                    <label>رقم الهاتف</label>
-                                    <input type="tel" placeholder="Ex: 22 22 22 22" required style={{ width: '100%', padding: '1rem', background: '#222', border: '1px solid #333', borderRadius: '8px', color: 'white' }} />
-                                </div>
-                            ) : (
-                                <div className="credit-card-inputs">
-                                    <div className="form-group">
-                                        <label>رقم البطاقة</label>
-                                        <input type="text" placeholder="0000 0000 0000 0000" required style={{ width: '100%', padding: '1rem', background: '#222', border: '1px solid #333', borderRadius: '8px', color: 'white' }} />
-                                    </div>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                                        <div className="form-group">
-                                            <label>تاريخ الانتهاء</label>
-                                            <input type="text" placeholder="MM/YY" required style={{ width: '100%', padding: '1rem', background: '#222', border: '1px solid #333', borderRadius: '8px', color: 'white' }} />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>CVC</label>
-                                            <input type="text" placeholder="123" required style={{ width: '100%', padding: '1rem', background: '#222', border: '1px solid #333', borderRadius: '8px', color: 'white' }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
+                            <ul className="plan-features">
+                                {plan.features.map((feature, idx) => (
+                                    <li key={idx}>
+                                        <Check size={18} className="check-icon" />
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
 
-                            <button type="submit" className="btn btn-primary pay-btn">
-                                دفع {plans.find(p => p.id === selectedPlan)?.price} MRU
-                            </button>
-                        </form>
-                    </div>
-                )}
+                            <Link to="/signup-offer">
+                                <button className="btn-plan btn-primary pulse-anim">
+                                    {plan.buttonText}
+                                </button>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

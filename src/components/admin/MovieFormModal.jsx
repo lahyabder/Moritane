@@ -110,30 +110,28 @@ const MovieFormModal = ({ isOpen, onClose, onSave, initialData, type = 'movie' }
 
                 <form onSubmit={handleSubmit} className="admin-form">
 
-                    {/* Content Type Selector - Only for new entries */}
-                    {!initialData && (
-                        <div className="form-group" style={{ marginBottom: '1.5rem', background: '#222', padding: '10px', borderRadius: '8px' }}>
-                            <label style={{ color: '#4ade80' }}>نوع المحتوى</label>
-                            <select
-                                name="type"
-                                value={formData.type}
-                                onChange={handleChange}
-                                style={{ width: '100%', padding: '0.8rem', background: '#111', border: '1px solid #333', color: 'white', borderRadius: '4px' }}
-                            >
-                                <option value="movie">فيلم</option>
-                                <option value="series">مسلسل</option>
-                                <option value="show">برنامج</option>
-                                <option value="documentary">وثائقي</option>
-                                <option value="theater">مسرحية</option>
-                                <option value="kids">أطفال</option>
-                                <option value="sports">رياضة</option>
-                                <option value="heritage">تراث</option>
-                                <option value="music">موسيقى</option>
-                                <option value="podcast">بودكاست</option>
-                                <option value="live">بث مباشر</option>
-                            </select>
-                        </div>
-                    )}
+                    {/* Content Type Selector - Always visible */}
+                    <div className="form-group" style={{ marginBottom: '1.5rem', background: '#222', padding: '10px', borderRadius: '8px' }}>
+                        <label style={{ color: '#4ade80' }}>نوع المحتوى</label>
+                        <select
+                            name="type"
+                            value={formData.type}
+                            onChange={handleChange}
+                            style={{ width: '100%', padding: '0.8rem', background: '#111', border: '1px solid #333', color: 'white', borderRadius: '4px' }}
+                        >
+                            <option value="movie">فيلم</option>
+                            <option value="series">مسلسل</option>
+                            <option value="show">برنامج</option>
+                            <option value="documentary">وثائقي</option>
+                            <option value="theater">مسرحية</option>
+                            <option value="kids">أطفال</option>
+                            <option value="sports">رياضة</option>
+                            <option value="heritage">تراث</option>
+                            <option value="music">موسيقى</option>
+                            <option value="podcast">بودكاست</option>
+                            <option value="live">بث مباشر</option>
+                        </select>
+                    </div>
 
                     {/* Image Upload / URL Section */}
                     <div className="form-group" style={{ marginBottom: '1.5rem' }}>

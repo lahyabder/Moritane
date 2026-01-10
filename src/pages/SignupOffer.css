@@ -1,0 +1,201 @@
+.signup-offer-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-deep-blue) 0%, #1a1b26 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background decoration */
+.signup-offer-page::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(246, 139, 45, 0.05) 0%, transparent 60%);
+    animation: rotate 60s linear infinite;
+    z-index: 1;
+}
+
+.signup-container {
+    background: rgba(30, 32, 70, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.signup-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.signup-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.signup-header p {
+    color: var(--text-gray);
+}
+
+.offer-badge {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    color: #cbd5e1;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    pointer-events: none;
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.9rem 3rem 0.9rem 1rem;
+    /* Right padding for icon */
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    direction: rtl;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 4px rgba(246, 139, 45, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-orange) 0%, #e67e22 100%);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(246, 139, 45, 0.5);
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success Modal Styles */
+.success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.success-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 3rem;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(74, 222, 128, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #4ade80;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -16,10 +16,13 @@ import AdminMovies from './pages/admin/AdminMovies';
 import AdminSeries from './pages/admin/AdminSeries';
 import AdminUsers from './pages/admin/AdminUsers';
 import AdminLive from './pages/admin/AdminLive';
+import AdminSubscriptions from './pages/admin/AdminSubscriptions';
 import AuthModal from './components/AuthModal';
 import Subscription from './pages/Subscription';
+import SignupOffer from './pages/SignupOffer';
 import PartnerRegistration from './pages/partner/PartnerRegistration';
 import PartnerDashboard from './pages/partner/PartnerDashboard';
+
 import { trendingMovies, seriesMock, heroMovie } from './data/mockData';
 
 const App = () => {
@@ -80,6 +83,7 @@ const App = () => {
           <Route path="series" element={<AdminSeries />} />
           <Route path="live" element={<AdminLive />} />
           <Route path="users" element={<AdminUsers />} />
+          <Route path="subscriptions" element={<AdminSubscriptions />} />
           <Route path="settings" element={<div style={{ color: 'white' }}>Work in progress...</div>} />
         </Route>
 
@@ -124,6 +128,7 @@ const App = () => {
                 <Route path="/live" element={<Live />} />
                 <Route path="/shows" element={<Shows onMovieClick={handleMovieClick} />} />
                 <Route path="/subscription" element={<Subscription />} />
+                <Route path="/signup-offer" element={<SignupOffer />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             )}
