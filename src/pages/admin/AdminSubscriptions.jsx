@@ -166,3 +166,5 @@ const AdminSubscriptions = () => {
         </div>
     );
 };
+
+export default AdminSubscriptions;
